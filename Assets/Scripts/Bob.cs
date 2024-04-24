@@ -6,7 +6,10 @@ public class Bob : MonoBehaviour
 {
     Animator anim;
     public float speed;
-    bool canMove = true;
+
+    public PlayerExperience playerExp;
+
+    bool isHit;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -14,18 +17,10 @@ public class Bob : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
-        {
-            transform.Translate(speed * Time.deltaTime * Vector2.left);
-        }
-        else
-        {
-            transform.Translate(0.03f * Time.deltaTime * Vector2.left);
-        }
+      
     }
     void Attack()
     {
-        canMove = false;
         anim.SetTrigger("hit");
     }
 
@@ -38,8 +33,20 @@ public class Bob : MonoBehaviour
     }
     public void TakeDamage()
     {
-        anim.SetBool("die", true);
-        transform.Translate(0.01f * Time.deltaTime * Vector2.left);
-        Destroy(gameObject, .5f);
+        if (!isHit)
+        {
+            isHit = true;
+            anim.SetBool("die", true);
+
+            // PlayerExperience playerExp = GetComponent<PlayerExperience>();
+            GameObject playerExperienceGameObject = GameObject.FindGameObjectWithTag("PlayerExperience");
+            PlayerExperience playerExp = playerExperienceGameObject.GetComponent<PlayerExperience>();
+            if (playerExp != null)
+            {
+                playerExp.AddXP(50);
+            }
+            Destroy(gameObject, .5f);
+        }
+
     }
 }

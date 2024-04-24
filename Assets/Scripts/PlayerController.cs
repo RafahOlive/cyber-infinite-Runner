@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
+    public float speed = 0f;
     [SerializeField] int jumpPower;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject losePanel;
     public bool gameOver = false;
+    bool isHit = false;
     void Start()
     {
         currentHealth = maxHealth;
@@ -25,6 +27,18 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (!isHit)
+        {
+            Vector3 movement = speed * Time.deltaTime * Vector3.right;
+            transform.Translate(movement);
+        }
+        else
+        {
+            Vector3 movement = Vector3.zero;
+            transform.Translate(movement);
+        }
+
+
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.18f, 0.04f), CapsuleDirection2D.Horizontal, 0, groundLayer);
 
         if (isGrounded)
@@ -50,17 +64,27 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(int damageAmount)
     {
-        anim.SetTrigger("isHurt");
-        currentHealth -= damageAmount;
-        if (currentHealth < 0)
+        if (!isHit)
         {
-            currentHealth = 0;
+            anim.SetTrigger("isHurt");
+            currentHealth -= damageAmount;
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+            }
+            UpdateHealthUI();
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+            isHit = true;
+            StartCoroutine(ResetHitState());
         }
-        UpdateHealthUI();
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+    }
+    IEnumerator ResetHitState()
+    {
+        yield return new WaitForSeconds(.7f);
+        isHit = false;
     }
     void UpdateHealthUI()
     {

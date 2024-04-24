@@ -8,12 +8,18 @@ public class BobSpawner : MonoBehaviour
     float timeBtwnSpawn;
     public float startTimeBtwnSpawn;
     public Transform spawnPoint;
+    public PlayerExperience playerExp;
 
     public void SpawnBob()
     {
         if (timeBtwnSpawn <= 0)
         {
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject bobPrefab = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            PlayerExperience playerExp = bobPrefab.GetComponent<PlayerExperience>();
+            if(playerExp == null)
+            {
+                playerExp = bobPrefab.AddComponent<PlayerExperience>();
+            }
             timeBtwnSpawn = startTimeBtwnSpawn;
         }
         else
