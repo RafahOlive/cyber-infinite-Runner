@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManagerCine : MonoBehaviour
 {
@@ -9,23 +10,11 @@ public class GameManagerCine : MonoBehaviour
     public PlayerController playerController;
     public Animator beginPanel;
     public Animator gameUI;
-
-    void Start()
-    {
-         if (!playerController.GetComponent<PlayerController>().gameOver)
-        {
-            if (gameIsStarted)
-            {
-                
-            }
-        }
-    }
-
-    void Update()
-    {
-        
-    }
-
+    [SerializeField] GameObject pauseMenu;
+    public int money;
+    public int blueCard;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI blueCardText;
     public void StartGame()
     {
         StartCoroutine(StartGameLevel1());
@@ -41,14 +30,14 @@ public class GameManagerCine : MonoBehaviour
         playerController.GetComponent<Animator>().SetBool("playGame", true);
         yield return new WaitForSeconds(1.5f);
 
-        playerController.speed = 1;
+        playerController.speed = 1f;
 
         gameIsStarted = true;
     }
 
     public void BeginScene()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game Camera Moving");
         Time.timeScale = 1f;
     }
 
@@ -56,4 +45,16 @@ public class GameManagerCine : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
 }

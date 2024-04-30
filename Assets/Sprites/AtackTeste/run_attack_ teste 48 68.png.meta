@@ -1,0 +1,461 @@
+fileFormatVersion: 2
+guid: 04d210b38cf15b5408327729a5541c29
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814b02e64863bd4479c48d42ae0d6cf2
+      internalID: 1620798261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93180d5ccf9ccb74fbddc152fa110a9d
+      internalID: 1585215005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bba79002634e4444ad9fe88feb98ca0
+      internalID: -1683561965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec3d97a0fbc8db498b8bd0a95f8d050
+      internalID: 786290394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce253990a59811429707f7496fc317e
+      internalID: 871744182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 600187a90d6675846a4f71d5994ad3a6
+      internalID: 1158709433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 80
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f56e069da262848b227acaaf4417c2
+      internalID: -1348624070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42295a2a66e16d24f95e26ec4146893d
+      internalID: 2055613241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_8
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd954ce9ab7b84e499b8aa4893e66f1b
+      internalID: 324513186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1677613a513eed4192612be7f31adb0
+      internalID: -354044525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_10
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8f7217bc254de40b69d1d2fbd9ec85
+      internalID: -2140392609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_11
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47599dc581f921d45bf8c47cecf4f81d
+      internalID: -1780829375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_12
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07893ccbf0aaf254081ee99d6d0a9eb0
+      internalID: 336217025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack midlle teste 48 68_13
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 32
+        width: 68
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2312e937d8f9934aac6067fe06638bd
+      internalID: -609137826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      run_attack midlle teste 48 68_0: 1620798261
+      run_attack midlle teste 48 68_1: 1585215005
+      run_attack midlle teste 48 68_10: -2140392609
+      run_attack midlle teste 48 68_11: -1780829375
+      run_attack midlle teste 48 68_12: 336217025
+      run_attack midlle teste 48 68_13: -609137826
+      run_attack midlle teste 48 68_2: -1683561965
+      run_attack midlle teste 48 68_3: 786290394
+      run_attack midlle teste 48 68_4: 871744182
+      run_attack midlle teste 48 68_5: 1158709433
+      run_attack midlle teste 48 68_6: -1348624070
+      run_attack midlle teste 48 68_7: 2055613241
+      run_attack midlle teste 48 68_8: 324513186
+      run_attack midlle teste 48 68_9: -354044525
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,835 @@
+fileFormatVersion: 2
+guid: de5d295b79c14bf45ae05717a673bbcf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c9f054022213f4ab756ee55e1d7471
+      internalID: -516108233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f09cfef278f1b24f815503b20799bc2
+      internalID: 158754571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353c9dcadf52c5f4b973d9b33b3cd790
+      internalID: -11171146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5117b230c73a49c4a80da39373810428
+      internalID: -560374384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92f431d6a967a14c998a14504ab34b5
+      internalID: 792467465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae5e3a40665c17b47aeb3a039c3cd915
+      internalID: -1009407298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd43fb5b479f8e46b489a9c76754481
+      internalID: -1836855336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66766c63954e8b44f8be0a1e012064c4
+      internalID: -584648156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355c99a6da3efdb4282ae44524de6677
+      internalID: -2081443886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 208
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b92dc21a533a1439c26834c06d767f
+      internalID: -1549568083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b78994977fd8e409805711bb6551af
+      internalID: -307167420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b772c6239297e7b48a9266aa1dd89292
+      internalID: 1617915247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76fe3e4f42d4844da93877993d49892
+      internalID: -1903970284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_13
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c01d1d15df97c41a9b036949b3cd94
+      internalID: -1107962496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_14
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1d02a75dcff174ca8cb0523b197645
+      internalID: 828097992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f560565ca2d5494f9e3873ea4bbddb7
+      internalID: 697949790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_16
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e2f218f34191148a2155bbb10cdb99
+      internalID: -1036400293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_17
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0aae5eca827d2e4c8b3ad53e17cb0b5
+      internalID: 247385738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c3ec79360c98747855f5b863773629
+      internalID: 1793601260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_19
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 160
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8475bea30f056aa4880e143d3911940c
+      internalID: -1903147101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c10247bbc14dd4582ff7eda3c5f3eb
+      internalID: 1249058307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de636f103b0c4d4ebafe1692c8b97e1
+      internalID: 1460404981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd8e903c2dcba344da6b01d731c1e5a7
+      internalID: 904406857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_23
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b359d9121185b4fa2b9d285a3fb70c
+      internalID: 1170836632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2b45a71a63fc094a8375f9d1dc3dd1e
+      internalID: -2070193643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_25
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9118b7140a23f3c4fb2828a9c7d4b0a1
+      internalID: 1896485114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_26
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa67730e085cbb4cbb78081adcd85e7
+      internalID: -1819779612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_27
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a7990ee9afab64c89118a616f657dc
+      internalID: 1028948418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_28
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61961a50fdd95f04b966ff86ec535dd3
+      internalID: -320827632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_29
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 112
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6610aeb0d8e16ec4da2d2ed9d7c8197b
+      internalID: 1138662175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run_attack_teste 48 96_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 96
+        height: 48
+      alignment: 9
+      pivot: {x: 0.29, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0dc99b714e70346ad2c895b1962944
+      internalID: 1801660325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      run_attack_teste 48 96_0: -516108233
+      run_attack_teste 48 96_1: 158754571
+      run_attack_teste 48 96_10: -307167420
+      run_attack_teste 48 96_11: 1617915247
+      run_attack_teste 48 96_12: -1903970284
+      run_attack_teste 48 96_13: -1107962496
+      run_attack_teste 48 96_14: 828097992
+      run_attack_teste 48 96_15: 697949790
+      run_attack_teste 48 96_16: -1036400293
+      run_attack_teste 48 96_17: 247385738
+      run_attack_teste 48 96_18: 1793601260
+      run_attack_teste 48 96_19: -1903147101
+      run_attack_teste 48 96_2: -11171146
+      run_attack_teste 48 96_20: 1249058307
+      run_attack_teste 48 96_21: 1460404981
+      run_attack_teste 48 96_22: 904406857
+      run_attack_teste 48 96_23: 1170836632
+      run_attack_teste 48 96_24: -2070193643
+      run_attack_teste 48 96_25: 1896485114
+      run_attack_teste 48 96_26: -1819779612
+      run_attack_teste 48 96_27: 1028948418
+      run_attack_teste 48 96_28: -320827632
+      run_attack_teste 48 96_29: 1138662175
+      run_attack_teste 48 96_3: -560374384
+      run_attack_teste 48 96_30: 1801660325
+      run_attack_teste 48 96_4: 792467465
+      run_attack_teste 48 96_5: -1009407298
+      run_attack_teste 48 96_6: -1836855336
+      run_attack_teste 48 96_7: -584648156
+      run_attack_teste 48 96_8: -2081443886
+      run_attack_teste 48 96_9: -1549568083
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
