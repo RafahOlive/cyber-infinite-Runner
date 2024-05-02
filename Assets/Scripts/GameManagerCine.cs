@@ -6,11 +6,18 @@ using TMPro;
 
 public class GameManagerCine : MonoBehaviour
 {
-    bool gameIsStarted = false;
     public PlayerController playerController;
     public Animator beginPanel;
     public Animator gameUI;
+    [SerializeField] GameObject beginPanelMenu;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject shopMenu;
+    public ParalaxTimer bgPrlx2;
+    public ParalaxTimer bgPrlx22;
+    public ParalaxTimer bgPrlx3;
+    public ParalaxTimer bgPrlx33;
+    public ParalaxTimer bgPrlx5;
+    public ParalaxTimer bgPrlx55;
     public int money;
     public int blueCard;
     public TextMeshProUGUI moneyText;
@@ -32,13 +39,30 @@ public class GameManagerCine : MonoBehaviour
 
         playerController.speed = 1f;
 
-        gameIsStarted = true;
+        bgPrlx2.GetComponent<ParalaxTimer>().speed = 0.2f;
+        bgPrlx22.GetComponent<ParalaxTimer>().speed = 0.2f;
+
+        bgPrlx3.GetComponent<ParalaxTimer>().speed = 0.4f;
+        bgPrlx33.GetComponent<ParalaxTimer>().speed = 0.4f;
+
+        bgPrlx5.GetComponent<ParalaxTimer>().speed = 0.6f;
+        bgPrlx55.GetComponent<ParalaxTimer>().speed = 0.6f;
     }
 
     public void BeginScene()
     {
         SceneManager.LoadScene("Game Camera Moving");
         Time.timeScale = 1f;
+    }
+     public void OpenShop()
+    {
+        shopMenu.SetActive(true);
+        beginPanelMenu.SetActive(false);
+    }
+    public void CloseShop()
+    {
+        shopMenu.SetActive(false);
+        beginPanelMenu.SetActive(true);
     }
 
     public void QuitGame()

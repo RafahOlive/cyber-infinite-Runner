@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -139,10 +139,10 @@ TextureImporter:
       name: Punk_death_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 17
-        height: 34
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: Punk_death_1
       rect:
         serializedVersion: 2
-        x: 51
+        x: 48
         y: 0
-        width: 23
-        height: 32
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Punk_death_2
       rect:
         serializedVersion: 2
-        x: 103
+        x: 96
         y: 0
-        width: 20
-        height: 27
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +202,10 @@ TextureImporter:
       name: Punk_death_3
       rect:
         serializedVersion: 2
-        x: 151
+        x: 144
         y: 0
-        width: 25
-        height: 14
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,10 +223,10 @@ TextureImporter:
       name: Punk_death_4
       rect:
         serializedVersion: 2
-        x: 199
+        x: 192
         y: 0
-        width: 25
-        height: 11
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +244,10 @@ TextureImporter:
       name: Punk_death_5
       rect:
         serializedVersion: 2
-        x: 247
+        x: 240
         y: 0
-        width: 25
-        height: 8
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -13,6 +13,12 @@ public class PlayerExperience : MonoBehaviour
     public Image xpBar;
     public TextMeshProUGUI levelText;
     public GameObject levelUpPanel;
+    AudioManager audioManager;
+    [SerializeField] AudioClip levelUpSfx;
+     void Start()
+    {
+        audioManager = GetComponent<AudioManager>();
+    }
     public void AddXP(int amount)
     {
         currentXP += amount;
@@ -26,6 +32,7 @@ public class PlayerExperience : MonoBehaviour
 
     private void LevelUp()
     {
+        audioManager.PlayAudio(levelUpSfx);
         level++;
         maxXP = level * 100;
         currentXP = 0;

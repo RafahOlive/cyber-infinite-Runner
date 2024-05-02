@@ -23,12 +23,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject losePanel;
     GameManagerCine gameManager;
     Animator wallsAnim;
+    [SerializeField] AudioClip jumpSfx;
+    [SerializeField] AudioClip punchSfx;
+    [SerializeField] AudioClip takeDamageSfx;
+    [SerializeField] AudioClip blueCardSfx;
+    [SerializeField] AudioClip moneySfx;
+    AudioManager audioManager;
+    [SerializeField] GameObject aeroLad;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCam").GetComponent<GameManagerCine>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>();
     }
     void Update()
     {
@@ -75,11 +83,21 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
+            audioManager.PlayAudio(jumpSfx);
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        }
+    }
+
+    public void Slide()
+    {
+        if (isGrounded)
+        {
+            anim.SetTrigger("slide");
         }
     }
     public void Attack()
     {
+        audioManager.PlayAudio(punchSfx);
         anim.SetTrigger("attack");
     }
 
@@ -87,19 +105,27 @@ public class PlayerController : MonoBehaviour
     {
         if (!isHit)
         {
-            anim.SetTrigger("isHurt");
-            currentHealth -= damageAmount;
-            if (currentHealth < 0)
+            if (aeroLad != null && aeroLad.activeSelf)
             {
-                currentHealth = 0;
+                aeroLad.SetActive(false);
             }
-            UpdateHealthUI();
-            if (currentHealth <= 0)
+            else
             {
-                Die();
+                audioManager.PlayAudio(takeDamageSfx);
+                anim.SetTrigger("isHurt");
+                currentHealth -= damageAmount;
+                if (currentHealth < 0)
+                {
+                    currentHealth = 0;
+                }
+                UpdateHealthUI();
+                if (currentHealth <= 0)
+                {
+                    Die();
+                }
+                isHit = true;
+                StartCoroutine(ResetHitState());
             }
-            isHit = true;
-            StartCoroutine(ResetHitState());
         }
     }
     IEnumerator ResetHitState()
@@ -125,12 +151,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Money"))
         {
+            audioManager.PlayAudio(moneySfx);
             gameManager.money++;
             gameManager.moneyText.text = gameManager.money.ToString();
             Destroy(other.gameObject);
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("CardBlue"))
         {
+            audioManager.PlayAudio(blueCardSfx);
             gameManager.blueCard++;
             gameManager.blueCardText.text = gameManager.blueCard.ToString();
             wallsAnim = GameObject.Find("WallsAnim").GetComponent<Animator>();
@@ -146,6 +174,11 @@ public class PlayerController : MonoBehaviour
     {
         losePanel.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void SkillAeroLad()
+    {
+        aeroLad.SetActive(true);
     }
 
     public void SkillSequencialPunch()

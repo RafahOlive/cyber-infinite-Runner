@@ -4,20 +4,37 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public PlayerController playerController;
     GameManagerCine gameManager;
     Animator wallsAnim;
     public GameObject spawnLevelOne;
     public GameObject spawnLevelTwo;
     private Vector2 spawnPosition;
-    [SerializeField] private float spawnDistance = 46.08f;
+    [SerializeField] private float spawnDistance = 103.68f;
     [SerializeField] private float lastSpawnPosition = 0;
     [SerializeField] private bool hasSpawned = false;
+    [SerializeField] private int currentLevel = 1;
+    [SerializeField] private int currentLevelToDestroy;
+    GameObject stageLoop;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCam").GetComponent<GameManagerCine>();
     }
 
-
+    void SetHasSpawnedToTrue()
+    {
+        hasSpawned = false;
+    }
+    void MoveMeToNextStage()
+    {
+        Vector2 currentPosition = transform.position;
+        currentPosition.x += spawnDistance;
+        transform.position = currentPosition;
+    }
+    void IncreasePlayerSpeed()
+    {
+        playerController.speed += 0.2f;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !hasSpawned)
@@ -26,19 +43,30 @@ public class LevelGenerator : MonoBehaviour
             spawnPosition = new Vector2(lastSpawnPosition, 0f);
             if (gameManager.blueCard != 3)
             {
-                GameObject stageLoop = Instantiate(spawnLevelOne, spawnPosition, Quaternion.identity);
+                stageLoop = Instantiate(spawnLevelOne, spawnPosition, Quaternion.identity);
                 wallsAnim = GameObject.Find("WallsAnim").GetComponent<Animator>();
-                stageLoop.name = "Stage one";
+                currentLevel++;
+                stageLoop.name = "Stage" + currentLevel.ToString();
                 hasSpawned = true;
-            } else if (gameManager.blueCard == 3)
+                Invoke(nameof(SetHasSpawnedToTrue), 4);
+                Invoke(nameof(MoveMeToNextStage), 4);
+                Invoke(nameof(IncreasePlayerSpeed), 5);
+            }
+            else if (gameManager.blueCard == 3)
             {
-                GameObject stageLoop = Instantiate(spawnLevelTwo, spawnPosition, Quaternion.identity);
-                stageLoop.name = "Stage one";
+                stageLoop = Instantiate(spawnLevelTwo, spawnPosition, Quaternion.identity);
+                currentLevel++;
+                stageLoop.name = "Stage" + currentLevel.ToString();
+                gameManager.blueCard = 0;
                 hasSpawned = true;
+                Invoke(nameof(SetHasSpawnedToTrue), 4);
+                Invoke(nameof(MoveMeToNextStage), 4);
+                Invoke(nameof(IncreasePlayerSpeed), 5);
             }
         }
+        currentLevelToDestroy = currentLevel - 1;
 
-        GameObject objectToDelete = GameObject.Find("Stage one");
+        GameObject objectToDelete = GameObject.Find("Stage" + currentLevelToDestroy.ToString());
         if (objectToDelete != null)
         {
             Destroy(objectToDelete, 20f);
