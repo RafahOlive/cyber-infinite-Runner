@@ -9,7 +9,7 @@ public class WallOfDeath : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
-            playerController.TakeDamage(3);
+            playerController.Die();
         }
     }
 }

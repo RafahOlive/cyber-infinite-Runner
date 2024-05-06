@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     [SerializeField] bool isGrounded;
     int maxHealth = 3;
-    int currentHealth;
+    public int currentHealth;
     public Image[] healthBars;
     public bool gameOver = false;
-    bool isHit = false;
+    public bool isHit = false;
     public GameObject levelUpPanel;
     [SerializeField] GameObject losePanel;
     GameManagerCine gameManager;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip blueCardSfx;
     [SerializeField] AudioClip moneySfx;
     AudioManager audioManager;
-    [SerializeField] GameObject aeroLad;
+    public GameObject aeroLad;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCam").GetComponent<GameManagerCine>();
@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
     }
-
     public void Slide()
     {
         if (isGrounded)
@@ -133,7 +132,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(.7f);
         isHit = false;
     }
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         for (int i = 0; i < healthBars.Length; i++)
         {
@@ -165,7 +164,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    void Die()
+    public void Die()
     {
         gameOver = true;
         anim.SetTrigger("die");
@@ -174,28 +173,5 @@ public class PlayerController : MonoBehaviour
     {
         losePanel.SetActive(true);
         Time.timeScale = 0f;
-    }
-
-    public void SkillAeroLad()
-    {
-        aeroLad.SetActive(true);
-    }
-
-    public void SkillSequencialPunch()
-    {
-        anim.SetBool("attackDouble", true);
-        Time.timeScale = 1f;
-        levelUpPanel.SetActive(false);
-    }
-    public void SkillOnePunch()
-    {
-        anim.SetBool("attackDouble", false);
-        Time.timeScale = 1f;
-        levelUpPanel.SetActive(false);
-    }
-    public void SkillNone()
-    {
-        Time.timeScale = 1f;
-        levelUpPanel.SetActive(false);
     }
 }
