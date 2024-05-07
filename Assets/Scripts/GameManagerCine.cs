@@ -9,6 +9,7 @@ public class GameManagerCine : MonoBehaviour
     public PlayerController playerController;
     public Animator beginPanel;
     public Animator gameUI;
+    [SerializeField] GameObject losePanel;
     [SerializeField] GameObject beginPanelMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject shopMenu;
@@ -24,9 +25,13 @@ public class GameManagerCine : MonoBehaviour
     float actualParalax1x33;
     float actualParalax1x5;
     float actualParalax1x55;
-    public int money;
+    public static int money;
+    public int stageMoney;
     public int blueCard;
-    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI shopMoneyText;
+    public TextMeshProUGUI stageMoneyText;
+    public TextMeshProUGUI stageMoneyCollectedText;
+    public TextMeshProUGUI totalMoneyCollectedText;
     public TextMeshProUGUI blueCardText;
     // void Update()
     // {
@@ -63,6 +68,14 @@ public class GameManagerCine : MonoBehaviour
     //         bgPrlx55.GetComponent<ParalaxTimer>().speed = actualParalax1x55;
     //     }
     // }
+    void Awake()
+    {
+        LoadMoney();
+    }
+    void Start()
+    {
+        shopMoneyText.text = money.ToString();
+    }
     public void StartGame()
     {
         StartCoroutine(StartGameLevel1());
@@ -93,11 +106,13 @@ public class GameManagerCine : MonoBehaviour
 
     public void BeginScene()
     {
+        SaveMoney();
         SceneManager.LoadScene("Game Camera Moving");
         Time.timeScale = 1f;
     }
     public void OpenShop()
     {
+        shopMoneyText.text = money.ToString();
         shopMenu.SetActive(true);
         beginPanelMenu.SetActive(false);
     }
@@ -109,6 +124,7 @@ public class GameManagerCine : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.SetInt("Money", money);
         Application.Quit();
     }
 
@@ -121,6 +137,29 @@ public class GameManagerCine : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+     public void Die()
+    {
+        playerController.gameOver = true;
+        playerController.GetComponent<Animator>().SetTrigger("die");
+    }
+    public void Lose()
+    {
+        int totalMoney = stageMoney + money;
+        money = totalMoney;
+        stageMoneyCollectedText.text = "Money collected: " + stageMoney.ToString();
+        totalMoneyCollectedText.text = "Total money : " + money.ToString();
+        losePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+     public static void SaveMoney()
+    {
+        PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.Save();
+    }
+    public static void LoadMoney()
+    {
+        money = PlayerPrefs.GetInt("Money", 0); // O segundo argumento é um valor padrão caso "Money" não exista
     }
 
 }

@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public bool gameOver = false;
     public bool isHit = false;
     public GameObject levelUpPanel;
-    [SerializeField] GameObject losePanel;
     GameManagerCine gameManager;
     Animator wallsAnim;
     [SerializeField] AudioClip jumpSfx;
@@ -120,12 +119,16 @@ public class PlayerController : MonoBehaviour
                 UpdateHealthUI();
                 if (currentHealth <= 0)
                 {
-                    Die();
+                    gameManager.Die();
                 }
                 isHit = true;
                 StartCoroutine(ResetHitState());
             }
         }
+    }
+    public void CallLoseOnGameManager()
+    {
+        gameManager.Lose();
     }
     IEnumerator ResetHitState()
     {
@@ -151,8 +154,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Money"))
         {
             audioManager.PlayAudio(moneySfx);
-            gameManager.money++;
-            gameManager.moneyText.text = gameManager.money.ToString();
+            gameManager.stageMoney++;
+            gameManager.stageMoneyText.text = gameManager.stageMoney.ToString();
             Destroy(other.gameObject);
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("CardBlue"))
@@ -163,15 +166,5 @@ public class PlayerController : MonoBehaviour
             wallsAnim = GameObject.Find("WallsAnim").GetComponent<Animator>();
             Destroy(other.gameObject);
         }
-    }
-    public void Die()
-    {
-        gameOver = true;
-        anim.SetTrigger("die");
-    }
-    public void Lose()
-    {
-        losePanel.SetActive(true);
-        Time.timeScale = 0f;
     }
 }
