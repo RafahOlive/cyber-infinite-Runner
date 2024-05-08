@@ -79,7 +79,7 @@ public class GameManagerCine : MonoBehaviour
             Debug.Log("PlayerController found!");
         }
         LoadMoney();
-        LoadAeroLadState();
+        // LoadAeroLadState();
     }
     void Start()
     {
