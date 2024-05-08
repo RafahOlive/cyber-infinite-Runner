@@ -18,7 +18,7 @@ public class LevelGenerator : MonoBehaviour
     GameObject stageLoop;
     void Start()
     {
-        gameManager = GameObject.Find("GameManagerCam").GetComponent<GameManagerCine>();
+        gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
     }
 
     void SetHasSpawnedToTrue()

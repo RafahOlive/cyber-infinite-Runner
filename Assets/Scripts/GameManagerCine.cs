@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManagerCine : MonoBehaviour
 {
-    public PlayerController playerController;
+    PlayerController playerController;
     public Animator beginPanel;
     public Animator gameUI;
     [SerializeField] GameObject losePanel;
@@ -70,10 +70,20 @@ public class GameManagerCine : MonoBehaviour
     // }
     void Awake()
     {
+        if (!GameObject.Find("Player").TryGetComponent<PlayerController>(out playerController))
+        {
+            Debug.LogError("PlayerController not found!");
+        }
+        else
+        {
+            Debug.Log("PlayerController found!");
+        }
         LoadMoney();
+        LoadAeroLadState();
     }
     void Start()
     {
+
         shopMoneyText.text = money.ToString();
     }
     public void StartGame()
@@ -138,7 +148,7 @@ public class GameManagerCine : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
-     public void Die()
+    public void Die()
     {
         playerController.gameOver = true;
         playerController.GetComponent<Animator>().SetTrigger("die");
@@ -152,7 +162,7 @@ public class GameManagerCine : MonoBehaviour
         losePanel.SetActive(true);
         Time.timeScale = 0f;
     }
-     public static void SaveMoney()
+    public static void SaveMoney()
     {
         PlayerPrefs.SetInt("Money", money);
         PlayerPrefs.Save();
@@ -161,5 +171,16 @@ public class GameManagerCine : MonoBehaviour
     {
         money = PlayerPrefs.GetInt("Money", 0); // O segundo argumento é um valor padrão caso "Money" não exista
     }
-
+    public void SaveAeroLadState()
+    {
+        int aeroladState = playerController.aeroLad.activeSelf ? 1 : 0;
+        PlayerPrefs.SetInt("AeroLadState", aeroladState);
+        PlayerPrefs.Save();
+    }
+    public void LoadAeroLadState()
+    {
+        int aeroladState = PlayerPrefs.GetInt("AeroLadState", 0);
+        bool isActive = aeroladState == 1 ? true : false;
+        playerController.aeroLad.SetActive(isActive);
+    }
 }

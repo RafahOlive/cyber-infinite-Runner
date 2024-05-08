@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public GameObject aeroLad;
     void Start()
     {
-        gameManager = GameObject.Find("GameManagerCam").GetComponent<GameManagerCine>();
+        gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
             if (aeroLad != null && aeroLad.activeSelf)
             {
                 aeroLad.SetActive(false);
+                gameManager.SaveAeroLadState();
             }
             else
             {

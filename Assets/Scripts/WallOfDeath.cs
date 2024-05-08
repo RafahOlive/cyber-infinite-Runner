@@ -8,7 +8,7 @@ public class WallOfDeath : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManagerCam").GetComponent<GameManagerCine>();
+        gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
     }
     void OnCollisionEnter2D(Collision2D other)
     {
