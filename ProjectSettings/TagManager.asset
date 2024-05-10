@@ -5,19 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerExperience
+  - Platform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Ignore Layer
   - Ground
+  - 
   - Enemy
-  - Player
   - Money
   - CardBlue
-  - 
   - 
   - 
   - 

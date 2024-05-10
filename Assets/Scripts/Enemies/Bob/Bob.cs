@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bob : MonoBehaviour
 {
     Animator anim;
+    AudioManager audioManager;
+    [SerializeField] AudioClip bobDeathfx;
     public float speed;
 
     public PlayerExperience playerExp;
@@ -13,6 +15,7 @@ public class Bob : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>();
     }
     void Attack()
     {
@@ -32,10 +35,11 @@ public class Bob : MonoBehaviour
         {
             isHit = true;
             anim.SetBool("die", true);
+            audioManager.PlayAudio(bobDeathfx);
 
-            // PlayerExperience playerExp = GetComponent<PlayerExperience>();
             GameObject playerExperienceGameObject = GameObject.FindGameObjectWithTag("PlayerExperience");
             PlayerExperience playerExp = playerExperienceGameObject.GetComponent<PlayerExperience>();
+
             if (playerExp != null)
             {
                 playerExp.AddXP(50);

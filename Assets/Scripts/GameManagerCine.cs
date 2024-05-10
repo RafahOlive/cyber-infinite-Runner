@@ -6,6 +6,8 @@ using TMPro;
 
 public class GameManagerCine : MonoBehaviour
 {
+    public bool gameIsStarted = false;
+    public bool gameIsPaused = false;
     PlayerController playerController;
     public Animator beginPanel;
     public Animator gameUI;
@@ -33,6 +35,7 @@ public class GameManagerCine : MonoBehaviour
     public TextMeshProUGUI stageMoneyCollectedText;
     public TextMeshProUGUI totalMoneyCollectedText;
     public TextMeshProUGUI blueCardText;
+    public TextMeshProUGUI distanceTraveledText;
     // void Update()
     // {
     //     if (playerController.isHit)
@@ -83,8 +86,11 @@ public class GameManagerCine : MonoBehaviour
     }
     void Start()
     {
-
         shopMoneyText.text = money.ToString();
+    }
+    void Update()
+    {
+        distanceTraveledText.text = "Distance: " + playerController.distanceTraveled.ToString("F1");
     }
     public void StartGame()
     {
@@ -93,6 +99,7 @@ public class GameManagerCine : MonoBehaviour
 
     public IEnumerator StartGameLevel1()
     {
+        gameIsStarted = true;
         beginPanel.GetComponent<Animator>().SetBool("playGame", true);
         yield return new WaitForSeconds(1f);
 
@@ -141,11 +148,14 @@ public class GameManagerCine : MonoBehaviour
     public void Pause()
     {
         pauseMenu.SetActive(true);
+        gameIsPaused = true;
         Time.timeScale = 0f;
     }
     public void Resume()
     {
         pauseMenu.SetActive(false);
+        gameIsPaused = false;
+        gameIsStarted = true;
         Time.timeScale = 1f;
     }
     public void Die()
@@ -160,6 +170,7 @@ public class GameManagerCine : MonoBehaviour
         stageMoneyCollectedText.text = "Money collected: " + stageMoney.ToString();
         totalMoneyCollectedText.text = "Total money : " + money.ToString();
         losePanel.SetActive(true);
+        gameIsStarted = false;
         Time.timeScale = 0f;
     }
     public static void SaveMoney()

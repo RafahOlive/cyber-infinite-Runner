@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5164651720549714574}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 1257475517042867620}
   - component: {fileID: 712124744834555691}
   - component: {fileID: 353225419092905147}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Clank
   m_TagString: Untagged
   m_Icon: {fileID: 0}

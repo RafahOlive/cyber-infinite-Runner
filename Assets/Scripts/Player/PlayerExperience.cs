@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerExperience : MonoBehaviour
 {
     public PlayerController playerController;
+    GameManagerCine gameManager;
     public int currentXP = 0;
     public int maxXP = 100;
     public int level = 1;
@@ -20,6 +21,7 @@ public class PlayerExperience : MonoBehaviour
     [SerializeField] AudioClip levelUpSfx;
     void Start()
     {
+        gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
         audioManager = GetComponent<AudioManager>();
     }
     public void AddXP(int amount)
@@ -44,6 +46,7 @@ public class PlayerExperience : MonoBehaviour
     void LevelUpPanel()
     {
         levelUpPanel.SetActive(true);
+        gameManager.gameIsPaused = true;
         Time.timeScale = 0;
         SelectRandomSkills(3);
         ActivateSelectedSkills();
@@ -99,6 +102,7 @@ public class PlayerExperience : MonoBehaviour
         playerController.currentHealth += 1;
         playerController.UpdateHealthUI();
         Time.timeScale = 1f;
+        gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
     }
@@ -106,6 +110,7 @@ public class PlayerExperience : MonoBehaviour
     {
         playerController.aeroLad.SetActive(true);
         Time.timeScale = 1f;
+        gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
     }
@@ -114,6 +119,7 @@ public class PlayerExperience : MonoBehaviour
     {
         playerController.GetComponent<Animator>().SetBool("attackDouble", true);
         Time.timeScale = 1f;
+        gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
     }
@@ -121,12 +127,14 @@ public class PlayerExperience : MonoBehaviour
     {
         playerController.GetComponent<Animator>().SetBool("attackDouble", false);
         Time.timeScale = 1f;
+        gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
     }
     public void SkillNone()
     {
         Time.timeScale = 1f;
+        gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
     }

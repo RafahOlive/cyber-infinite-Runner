@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698869649598011246}
   - component: {fileID: 9170771962017155743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tile_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7020563313196030401}
   - component: {fileID: 5331549604525887485}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tile_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8835485943252822630}
   - component: {fileID: 642145548645339229}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tile_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 5374632168044515070}
   - component: {fileID: 7055111588638145304}
   - component: {fileID: 4447165462409104595}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Platofrm 3x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
