@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
 
                 Invoke(nameof(DeactivateAeroLad), 2);
 
+                // gameManager.SaveAeroLadState();
             }
             else
             {
@@ -192,12 +193,11 @@ public class PlayerController : MonoBehaviour
         aeroLad.transform.localPosition = new Vector3(-0.309f, 0.153f, 0f);
 
         aeroLad.SetActive(false);
+        gameManager.SaveAeroLadState();
         aeroLad.GetComponent<Animator>().SetBool("hit", false);
 
         Rigidbody2D rb = aeroLad.GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Kinematic;
-
-        gameManager.SaveAeroLadState();
     }
     public void CallLoseOnGameManager()
     {

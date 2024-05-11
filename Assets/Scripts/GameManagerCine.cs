@@ -82,7 +82,7 @@ public class GameManagerCine : MonoBehaviour
             Debug.Log("PlayerController found!");
         }
         LoadMoney();
-        // LoadAeroLadState();
+        LoadAeroLadState();
     }
     void Start()
     {
@@ -124,6 +124,7 @@ public class GameManagerCine : MonoBehaviour
     public void BeginScene()
     {
         SaveMoney();
+        LoadAeroLadState();
         SceneManager.LoadScene("Game Camera Moving");
         Time.timeScale = 1f;
     }

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4058210808320809412}
   m_Layer: 7
   m_Name: Platofrm 1x1
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.002966404, y: 0.08461118}
+  m_Offset: {x: -0.0000667572, y: -0.00045752525}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -161,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3310957, y: 0.149876}
+  m_Size: {x: 0.3252964, y: 0.3200134}
   m_EdgeRadius: 0
 --- !u!251 &4058210808320809412
 PlatformEffector2D:
