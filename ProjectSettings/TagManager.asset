@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PlayerExperience
   - Platform
+  - JumpTutorial
+  - SlideTutorial
+  - AttackTutorial
   layers:
   - Default
   - TransparentFX

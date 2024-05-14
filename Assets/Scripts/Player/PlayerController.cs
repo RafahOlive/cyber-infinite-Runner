@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip moneySfx;
     AudioManager audioManager;
     public GameObject aeroLad;
+    [SerializeField] Animator fingerAnimator;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
@@ -50,9 +51,14 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (isGrounded && Input.GetKeyDown(KeyCode.F))
         {
             Attack();
+        }
+        if (isGrounded && Input.GetKeyDown(KeyCode.S))
+        {
+            Slide();
+            StartCoroutine(DisableCollision());
         }
         //TOUCH CONFIGURATION ON MOBILE SCREEN
         if (Input.touchCount > 0)
@@ -73,9 +79,13 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (deltaY < 0)
                 {
+                    Slide();
                     if (platformCollider != null)
                     {
-                        StartCoroutine(DisableCollision());
+                        if (!isHit && !isAttacking && isGrounded)
+                        {
+                            StartCoroutine(DisableCollision());
+                        }
                     }
                 }
             }
@@ -112,35 +122,62 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
-        if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
+        if (gameManager.isOnJumpTutorial)
         {
-            if (isGrounded)
+            return;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            fingerAnimator.Play("Idle");
+            if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
             {
-                audioManager.PlayAudio(jumpSfx);
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                if (isGrounded)
+                {
+                    audioManager.PlayAudio(jumpSfx);
+                    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                }
             }
         }
     }
     public void Slide()
     {
-        if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
+        if (gameManager.isOnSlideTutorial)
         {
-            if (isGrounded)
+            return;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            fingerAnimator.Play("Idle");
+            if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking && !isSliding)
             {
-                isSliding = true;
-                anim.SetTrigger("slide");
+                if (isGrounded)
+                {
+                    isSliding = true;
+                    anim.SetTrigger("slide");
+                }
             }
         }
     }
     public void Attack()
     {
-        if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isSliding)
+        if (gameManager.isOnAttackTutorial)
         {
-            if (isGrounded)
+            return;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            fingerAnimator.Play("Idle");
+            if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isSliding)
             {
-                isAttacking = true;
-                audioManager.PlayAudio(punchSfx);
-                anim.SetTrigger("attack");
+                if (isGrounded)
+                {
+                    isAttacking = true;
+                    audioManager.PlayAudio(punchSfx);
+                    anim.SetTrigger("attack");
+                }
             }
         }
     }
@@ -151,6 +188,10 @@ public class PlayerController : MonoBehaviour
     public void ChangeVariableIsSliding()
     {
         isSliding = false;
+    }
+    public void ChangeVariableGameIsStarted()
+    {
+        gameManager.gameIsStarted = true;
     }
     public void TakeDamage(int damageAmount)
     {
@@ -258,10 +299,13 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator DisableCollision()
     {
-        Collider2D platformCol = platformCollider.GetComponent<Collider2D>();
+        if (platformCollider != null)
+        {
+            Collider2D platformCol = platformCollider.GetComponent<Collider2D>();
 
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), platformCol);
-        yield return new WaitForSeconds(0.25f);
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), platformCol, false);
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), platformCol);
+            yield return new WaitForSeconds(0.5f);
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), platformCol, false);
+        }
     }
 }

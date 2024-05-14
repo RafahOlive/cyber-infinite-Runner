@@ -8,6 +8,9 @@ public class GameManagerCine : MonoBehaviour
 {
     public bool gameIsStarted = false;
     public bool gameIsPaused = false;
+    public bool isOnJumpTutorial = true;
+    public bool isOnSlideTutorial = true;
+    public bool isOnAttackTutorial = true;
     PlayerController playerController;
     public Animator beginPanel;
     public Animator gameUI;
@@ -83,6 +86,7 @@ public class GameManagerCine : MonoBehaviour
         }
         LoadMoney();
         LoadAeroLadState();
+        LoadTutorialState();
     }
     void Start()
     {
@@ -99,7 +103,6 @@ public class GameManagerCine : MonoBehaviour
 
     public IEnumerator StartGameLevel1()
     {
-        gameIsStarted = true;
         beginPanel.GetComponent<Animator>().SetBool("playGame", true);
         yield return new WaitForSeconds(1f);
 
@@ -159,6 +162,11 @@ public class GameManagerCine : MonoBehaviour
         gameIsStarted = true;
         Time.timeScale = 1f;
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene("Game Camera Moving");
+        Time.timeScale = 1f;
+    }
     public void Die()
     {
         playerController.gameOver = true;
@@ -194,5 +202,19 @@ public class GameManagerCine : MonoBehaviour
         int aeroladState = PlayerPrefs.GetInt("AeroLadState", 0);
         bool isActive = aeroladState == 1 ? true : false;
         playerController.aeroLad.SetActive(isActive);
+    }
+    public void SaveTutorialState()
+    {
+        PlayerPrefs.SetInt("IsOnJumpTutorial", isOnJumpTutorial ? 1 : 0);
+        PlayerPrefs.SetInt("IsOnSlideTutorial", isOnSlideTutorial ? 1 : 0);
+        PlayerPrefs.SetInt("IsOnAttackTutorial", isOnAttackTutorial ? 1 : 0);
+
+        PlayerPrefs.Save();
+    }
+    public void LoadTutorialState()
+    {
+        isOnJumpTutorial = PlayerPrefs.GetInt("IsOnJumpTutorial", 0) == 1;
+        isOnSlideTutorial = PlayerPrefs.GetInt("IsOnSlideTutorial", 0) == 1;
+        isOnAttackTutorial = PlayerPrefs.GetInt("IsOnAttackTutorial", 0) == 1;
     }
 }
