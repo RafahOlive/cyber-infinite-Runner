@@ -213,7 +213,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!95 &712124744834555691
 Animator:
   serializedVersion: 5

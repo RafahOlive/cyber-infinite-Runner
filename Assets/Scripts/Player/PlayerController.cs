@@ -36,9 +36,11 @@ public class PlayerController : MonoBehaviour
     AudioManager audioManager;
     public GameObject aeroLad;
     [SerializeField] Animator fingerAnimator;
+    [SerializeField] Animator readyTextAnimator;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
+        fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -129,6 +131,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+            fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
             fingerAnimator.Play("Idle");
             if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
             {
@@ -149,6 +152,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+            fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
             fingerAnimator.Play("Idle");
             if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking && !isSliding)
             {
@@ -169,6 +173,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+            fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
             fingerAnimator.Play("Idle");
             if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isSliding)
             {
@@ -263,6 +268,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public void ReadyText()
+    {
+        readyTextAnimator.Play("Start");
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Money"))
@@ -287,6 +296,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             platformCollider = collision.collider;
+        }
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            Debug.Log("Colidi");
+            TakeDamage(1);
         }
     }
 
