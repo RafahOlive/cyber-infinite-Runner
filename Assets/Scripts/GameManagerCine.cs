@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class GameManagerCine : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class GameManagerCine : MonoBehaviour
     public TextMeshProUGUI totalMoneyCollectedText;
     public TextMeshProUGUI blueCardText;
     public TextMeshProUGUI distanceTraveledText;
+    private Light2D globalLight;
     // void Update()
     // {
     //     if (playerController.isHit)
@@ -76,6 +78,7 @@ public class GameManagerCine : MonoBehaviour
     // }
     void Awake()
     {
+        // ClearAllPlayerPrefs();
         if (!GameObject.Find("Player").TryGetComponent<PlayerController>(out playerController))
         {
             Debug.LogError("PlayerController not found!");
@@ -87,6 +90,9 @@ public class GameManagerCine : MonoBehaviour
         LoadMoney();
         LoadAeroLadState();
         LoadTutorialState();
+
+        GameObject globalLightObj = GameObject.Find("Global Light 2D");
+        globalLight = globalLightObj.GetComponent<Light2D>();
     }
     void Start()
     {
@@ -123,7 +129,28 @@ public class GameManagerCine : MonoBehaviour
         bgPrlx5.GetComponent<ParalaxTimer>().speed = 0.6f;
         bgPrlx55.GetComponent<ParalaxTimer>().speed = 0.6f;
     }
+    public void ChangeGlobalLight(float intensity, float duration)
+    {
+        GameObject globalLightObj = GameObject.Find("Global Light 2D");
+        globalLight = globalLightObj.GetComponent<Light2D>();
+        // globalLight.intensity = intensity;
+        StartCoroutine(ChangeLightIntensity(intensity, duration));
+    }
+    private IEnumerator ChangeLightIntensity(float targetIntensity, float duration)
+    {
+        float startIntensity = globalLight.intensity;
+        float elapsedTime = 0f;
 
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            globalLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duration);
+            yield return null; // Espera até o próximo frame
+        }
+
+        // Garante que a intensidade final seja exatamente a desejada
+        globalLight.intensity = targetIntensity;
+    }
     public void BeginScene()
     {
         SaveMoney();
@@ -182,6 +209,12 @@ public class GameManagerCine : MonoBehaviour
         gameIsStarted = false;
         Time.timeScale = 0f;
     }
+    private static void ClearAllPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Debug.Log("PlayerPrefs have been cleared");
+    }
     public static void SaveMoney()
     {
         PlayerPrefs.SetInt("Money", money);
@@ -213,8 +246,8 @@ public class GameManagerCine : MonoBehaviour
     }
     public void LoadTutorialState()
     {
-        isOnJumpTutorial = PlayerPrefs.GetInt("IsOnJumpTutorial", 0) == 1;
-        isOnSlideTutorial = PlayerPrefs.GetInt("IsOnSlideTutorial", 0) == 1;
-        isOnAttackTutorial = PlayerPrefs.GetInt("IsOnAttackTutorial", 0) == 1;
+        isOnJumpTutorial = PlayerPrefs.GetInt("IsOnJumpTutorial", 1) == 1;
+        isOnSlideTutorial = PlayerPrefs.GetInt("IsOnSlideTutorial", 1) == 1;
+        isOnAttackTutorial = PlayerPrefs.GetInt("IsOnAttackTutorial", 1) == 1;
     }
 }

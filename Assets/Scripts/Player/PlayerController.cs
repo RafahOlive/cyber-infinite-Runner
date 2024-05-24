@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.18f, 0.04f), CapsuleDirection2D.Horizontal, 0, groundLayer);
         if (isGrounded)
         {
+
             anim.SetBool("isJumping", false);
         }
         else
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
             fingerAnimator.Play("Idle");
             if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
             {
-                if (isGrounded)
+                if (isGrounded && rb.velocity.y <= 0)
                 {
                     audioManager.PlayAudio(jumpSfx);
                     rb.velocity = new Vector2(rb.velocity.x, jumpPower);

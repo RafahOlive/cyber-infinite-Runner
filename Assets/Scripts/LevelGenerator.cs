@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
     public PlayerController playerController;
     GameManagerCine gameManager;
     Animator wallsAnim;
+    private bool spawnLevelOneNext = false;
     public GameObject spawnLevelOne;
     public GameObject spawnLevelTwo;
     private Vector2 spawnPosition;
@@ -43,7 +44,18 @@ public class LevelGenerator : MonoBehaviour
             spawnPosition = new Vector2(lastSpawnPosition, 0f);
             if (gameManager.blueCard != 3)
             {
-                stageLoop = Instantiate(spawnLevelOne, spawnPosition, Quaternion.identity);
+                if (spawnLevelOneNext)
+                {
+                    stageLoop = Instantiate(spawnLevelOne, spawnPosition, Quaternion.identity);
+                    gameManager.ChangeGlobalLight(1f, 10f);
+                }
+                else
+                {
+                    stageLoop = Instantiate(spawnLevelTwo, spawnPosition, Quaternion.identity);
+                    gameManager.ChangeGlobalLight(0.5f, 10f);
+                }
+                spawnLevelOneNext = !spawnLevelOneNext;
+
                 wallsAnim = GameObject.Find("WallsAnim").GetComponent<Animator>();
                 currentLevel++;
                 stageLoop.name = "Stage" + currentLevel.ToString();
@@ -52,18 +64,19 @@ public class LevelGenerator : MonoBehaviour
                 Invoke(nameof(MoveMeToNextStage), 4);
                 Invoke(nameof(IncreasePlayerSpeed), 5);
             }
-            else if (gameManager.blueCard == 3)
-            {
-                stageLoop = Instantiate(spawnLevelTwo, spawnPosition, Quaternion.identity);
-                currentLevel++;
-                stageLoop.name = "Stage" + currentLevel.ToString();
-                gameManager.blueCard = 0;
-                hasSpawned = true;
-                Invoke(nameof(SetHasSpawnedToTrue), 4);
-                Invoke(nameof(MoveMeToNextStage), 4);
-                Invoke(nameof(IncreasePlayerSpeed), 5);
-            }
+            // else if (gameManager.blueCard == 3)
+            // {
+            //     stageLoop = Instantiate(spawnLevelTwo, spawnPosition, Quaternion.identity);
+            //     currentLevel++;
+            //     stageLoop.name = "Stage" + currentLevel.ToString();
+            //     gameManager.blueCard = 0;
+            //     hasSpawned = true;
+            //     Invoke(nameof(SetHasSpawnedToTrue), 4);
+            //     Invoke(nameof(MoveMeToNextStage), 4);
+            //     Invoke(nameof(IncreasePlayerSpeed), 5);
+            // }
         }
+
         currentLevelToDestroy = currentLevel - 1;
 
         GameObject objectToDelete = GameObject.Find("Stage" + currentLevelToDestroy.ToString());

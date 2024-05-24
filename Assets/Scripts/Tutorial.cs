@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] Animator fingerAnimator;
-    [SerializeField] GameManagerCine gameManager;
+    Animator fingerAnimator;
+    GameManagerCine gameManager;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
+        fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
     }
     
     void OnTriggerEnter2D(Collider2D other)
