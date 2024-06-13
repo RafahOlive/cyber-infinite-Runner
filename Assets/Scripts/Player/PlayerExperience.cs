@@ -19,6 +19,7 @@ public class PlayerExperience : MonoBehaviour
     List<GameObject> selectedSkills = new();
     AudioManager audioManager;
     [SerializeField] AudioClip levelUpSfx;
+    [SerializeField] AudioClip riseAeroladSfx;
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
@@ -31,6 +32,7 @@ public class PlayerExperience : MonoBehaviour
         UpdateXPBar();
         if (currentXP >= maxXP)
         {
+            xpBar.fillAmount = 0;
             LevelUp();
         }
     }
@@ -108,11 +110,13 @@ public class PlayerExperience : MonoBehaviour
     }
     public void SkillAeroLad()
     {
+        audioManager.PlayAudio(riseAeroladSfx);
         playerController.aeroLad.SetActive(true);
         Time.timeScale = 1f;
         gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
+        playerController.ActivateInvincibility(1f);
     }
 
     public void SkillSequencialPunch()

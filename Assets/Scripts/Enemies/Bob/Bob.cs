@@ -46,6 +46,5 @@ public class Bob : MonoBehaviour
             }
             Destroy(gameObject, .5f);
         }
-
     }
 }

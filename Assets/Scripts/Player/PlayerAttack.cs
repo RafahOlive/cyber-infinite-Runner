@@ -19,11 +19,13 @@ public class PlayerAttack : MonoBehaviour
             }
             if (other.gameObject.name == "Clank")
             {
-                Destroy(other.gameObject);
+                Clank clankController = other.gameObject.GetComponent<Clank>();
+                clankController.TakeDamage();
             }
             if (other.gameObject.name == "Bomber")
             {
-                Destroy(other.gameObject);
+                Bomber bomberbobController = other.gameObject.GetComponent<Bomber>();
+                bomberbobController.TakeDamage();
             }
         }
 

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
+    [SerializeField] Collider2D playerCol;
     public float speed = 0f;
     public float distanceTraveled = 0f;
     [SerializeField] int jumpPower;
@@ -25,22 +26,28 @@ public class PlayerController : MonoBehaviour
     public bool isHit = false;
     public bool isAttacking = false;
     public bool isSliding = false;
+    public bool isInvincible = false;
     public GameObject levelUpPanel;
     GameManagerCine gameManager;
-    Animator wallsAnim;
     [SerializeField] AudioClip jumpSfx;
     [SerializeField] AudioClip punchSfx;
     [SerializeField] AudioClip takeDamageSfx;
     [SerializeField] AudioClip blueCardSfx;
     [SerializeField] AudioClip moneySfx;
+    [SerializeField] AudioClip deathAeroladSfx;
     AudioManager audioManager;
     public GameObject aeroLad;
-    [SerializeField] Animator fingerAnimator;
+    // [SerializeField] Animator fingerAnimator;
     [SerializeField] Animator readyTextAnimator;
+    [SerializeField] GameObject portal;
+    [SerializeField] Transform portalPos;
+    [SerializeField] Transform playerPortalPos;
+
+
     void Start()
     {
         gameManager = GameObject.Find("GameManagerCine").GetComponent<GameManagerCine>();
-        fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
+        // fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -98,93 +105,114 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = speed * Time.deltaTime * Vector3.right;
             transform.Translate(movement);
 
+            if (gameManager.gameIsStarted)
+            {
+                gameManager.bgPrlx2.GetComponent<ParalaxTimer>().speed = 0.2f;
+                gameManager.bgPrlx22.GetComponent<ParalaxTimer>().speed = 0.2f;
+
+                gameManager.bgPrlx3.GetComponent<ParalaxTimer>().speed = 0.4f;
+                gameManager.bgPrlx33.GetComponent<ParalaxTimer>().speed = 0.4f;
+
+                gameManager.bgPrlx5.GetComponent<ParalaxTimer>().speed = 0.6f;
+                gameManager.bgPrlx55.GetComponent<ParalaxTimer>().speed = 0.6f;
+            }
             distanceTraveled += Mathf.Abs(movement.x);
         }
         else if (isHit || gameOver)
         {
             Vector3 movement = Vector3.zero;
             transform.Translate(movement);
+
+            gameManager.bgPrlx2.GetComponent<ParalaxTimer>().speed = 0f;
+            gameManager.bgPrlx22.GetComponent<ParalaxTimer>().speed = 0f;
+
+            gameManager.bgPrlx3.GetComponent<ParalaxTimer>().speed = 0f;
+            gameManager.bgPrlx33.GetComponent<ParalaxTimer>().speed = 0f;
+
+            gameManager.bgPrlx5.GetComponent<ParalaxTimer>().speed = 0f;
+            gameManager.bgPrlx55.GetComponent<ParalaxTimer>().speed = 0f;
         }
         //CONTROL IF THE PLAYER IS ON GROUND, FOR JUMPING OR ATTACK
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.18f, 0.04f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-        if (isGrounded)
+        if (anim == null)
         {
-
-            anim.SetBool("isJumping", false);
+            Debug.LogError("Animator is not found on the GameObject!");
         }
         else
         {
-            anim.SetBool("isJumping", true);
+            if (isGrounded)
+            {
+                anim.SetBool("isJumping", false);
+            }
+            else
+            {
+                anim.SetBool("isJumping", true);
+            }
         }
-        //MANAGE WALL OF COLLECTABLE FOR PASS THROUGH NEXT LEVEL
-        if (gameManager.blueCard == 3)
-        {
-            wallsAnim = GameObject.Find("WallsAnim").GetComponent<Animator>();
-            wallsAnim.SetBool("openWall", true);
-        }
+
     }
     public void Jump()
     {
-        if (gameManager.isOnJumpTutorial)
+        // if (gameManager.isOnJumpTutorial)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        // Time.timeScale = 1;
+        // fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
+        // fingerAnimator.Play("Idle");
+        if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
         {
-            return;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
-            fingerAnimator.Play("Idle");
-            if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking)
+            if (isGrounded && rb.velocity.y <= 0)
             {
-                if (isGrounded && rb.velocity.y <= 0)
-                {
-                    audioManager.PlayAudio(jumpSfx);
-                    rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                }
+                audioManager.PlayAudio(jumpSfx);
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             }
         }
+        // }
     }
     public void Slide()
     {
-        if (gameManager.isOnSlideTutorial)
+        // if (gameManager.isOnSlideTutorial)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        //     Time.timeScale = 1;
+        //     fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
+        //     fingerAnimator.Play("Idle");
+        if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking && !isSliding)
         {
-            return;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
-            fingerAnimator.Play("Idle");
-            if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isAttacking && !isSliding)
+            if (isGrounded)
             {
-                if (isGrounded)
-                {
-                    isSliding = true;
-                    anim.SetTrigger("slide");
-                }
+                isSliding = true;
+                anim.SetTrigger("slide");
             }
+            // }
         }
     }
     public void Attack()
     {
-        if (gameManager.isOnAttackTutorial)
+        // if (gameManager.isOnAttackTutorial)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        // Time.timeScale = 1;
+        // fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
+        // fingerAnimator.Play("Idle");
+        if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isSliding && !isAttacking)
         {
-            return;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            fingerAnimator = GameObject.Find("Point finger").GetComponent<Animator>();
-            fingerAnimator.Play("Idle");
-            if (gameManager.gameIsStarted && !gameManager.gameIsPaused && !isHit && !isSliding)
+            if (isGrounded)
             {
-                if (isGrounded)
-                {
-                    isAttacking = true;
-                    audioManager.PlayAudio(punchSfx);
-                    anim.SetTrigger("attack");
-                }
+                isAttacking = true;
+                audioManager.PlayAudio(punchSfx);
+                anim.SetTrigger("attack");
             }
+            // }
         }
     }
     public void ChangeVariableIsAttacking()
@@ -201,22 +229,30 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(int damageAmount)
     {
+        if (isInvincible)
+        {
+            return;
+        }
+
         if (!isHit)
         {
             if (aeroLad != null && aeroLad.activeSelf)
             {
+                audioManager.PlayAudio(deathAeroladSfx);
                 aeroLad.GetComponent<Animator>().SetBool("hit", true);
                 aeroLad.transform.SetParent(null);
 
                 Rigidbody2D rb = aeroLad.GetComponent<Rigidbody2D>();
                 rb.bodyType = RigidbodyType2D.Dynamic;
 
-                Invoke(nameof(DeactivateAeroLad), 2);
-
-                // gameManager.SaveAeroLadState();
+                Invoke(nameof(ReactivateAeroLad), .5f);
+                gameManager.SaveAeroLadState();
             }
             else
             {
+                isHit = true;
+                isAttacking = false;
+                isSliding = false;
                 audioManager.PlayAudio(takeDamageSfx);
                 anim.SetTrigger("isHurt");
                 currentHealth -= damageAmount;
@@ -229,12 +265,21 @@ public class PlayerController : MonoBehaviour
                 {
                     gameManager.Die();
                 }
-                isHit = true;
-                StartCoroutine(ResetHitState());
             }
+            StartCoroutine(ResetHitState());
         }
     }
-    void DeactivateAeroLad()
+    public void ActivateInvincibility(float duration)
+    {
+        StartCoroutine(InvincibilityCoroutine(duration));
+    }
+    IEnumerator InvincibilityCoroutine(float duration)
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(duration);
+        isInvincible = false;
+    }
+    void ReactivateAeroLad()
     {
         aeroLad.transform.SetParent(transform);
         aeroLad.transform.localPosition = new Vector3(-0.309f, 0.153f, 0f);
@@ -287,8 +332,15 @@ public class PlayerController : MonoBehaviour
             audioManager.PlayAudio(blueCardSfx);
             gameManager.blueCard++;
             gameManager.blueCardText.text = gameManager.blueCard.ToString();
-            wallsAnim = GameObject.Find("WallsAnim").GetComponent<Animator>();
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("GunToKillBoardWalker"))
+        {
+            GameObject boardWalkerObject = GameObject.Find("BoardWalker");
+            BoardWalker boardWalker = boardWalkerObject.GetComponent<BoardWalker>();
+            Destroy(other.gameObject);
+            boardWalker.TakeHit();
         }
     }
 
@@ -298,13 +350,12 @@ public class PlayerController : MonoBehaviour
         {
             platformCollider = collision.collider;
         }
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             Debug.Log("Colidi");
             TakeDamage(1);
         }
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Platform"))
@@ -322,5 +373,39 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), platformCol, false);
         }
+    }
+    public void StartMovePlayerToLevelGenerator()
+    {
+        StartCoroutine(MovePlayerToLevelGenerator());
+    }
+    IEnumerator MovePlayerToLevelGenerator()
+    {
+        float actualSpeed = speed;
+        speed = 0;
+        // while (portal.transform.position.y != playerPortalPos.position.y)
+        // {
+        //     portal.transform.position = Vector2.MoveTowards(portal.transform.position, playerPortalPos.transform.position, 4f * Time.deltaTime);
+        //     yield return null; // Espera até o próximo frame
+        // }
+        // yield return new WaitForSeconds(5f);
+        rb.isKinematic = true;
+        playerCol.enabled = false;
+        portal.GetComponent<Animator>().Play("In");
+
+        yield return new WaitForSeconds(1f);
+        Vector2 playerPortalPos1 = new(portalPos.position.x, transform.position.y);
+        while (transform.position.x != playerPortalPos1.x)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, playerPortalPos1, 5f * Time.deltaTime);
+            yield return null; // Espera até o próximo frame
+        }
+
+        yield return new WaitForSeconds(1f);
+        rb.isKinematic = false;
+        playerCol.enabled = true;
+        portal.GetComponent<Animator>().Play("Out");
+
+        yield return new WaitForSeconds(.5f);
+        speed = actualSpeed;
     }
 }

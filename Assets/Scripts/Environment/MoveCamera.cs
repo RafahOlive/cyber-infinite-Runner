@@ -8,7 +8,7 @@ public class MoveCamera : MonoBehaviour
 
     void Update()
     {
-        Vector3 movement = Vector3.right * speed * Time.deltaTime;
+        Vector3 movement = speed * Time.deltaTime * Vector3.right;
         transform.Translate(movement);
     }
 }

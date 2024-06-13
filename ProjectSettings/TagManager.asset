@@ -9,6 +9,7 @@ TagManager:
   - JumpTutorial
   - SlideTutorial
   - AttackTutorial
+  - GunToKillBoardWalker
   layers:
   - Default
   - TransparentFX
@@ -46,11 +47,11 @@ TagManager:
   - name: Background
     uniqueID: 3608056691
     locked: 0
-  - name: Ground
-    uniqueID: 217499299
-    locked: 0
   - name: Environment
     uniqueID: 3007575195
+    locked: 0
+  - name: Ground
+    uniqueID: 217499299
     locked: 0
   - name: Default
     uniqueID: 0

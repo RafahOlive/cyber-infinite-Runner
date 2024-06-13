@@ -237,8 +237,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312035044197793410}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.71314937, w: 0.70101213}
-  m_LocalPosition: {x: 0.524, y: -0.05, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.501, y: -0.169, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,9 +259,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: a3c6f60c000000009bf443b3
@@ -278,22 +278,22 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.038650006, y: 0.04245001, z: 0}
-    m_Extent: {x: 0.58355, y: 1.0797501, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
+    m_Center: {x: -0.009685516, y: 0.13279232, z: 0}
+    m_Extent: {x: 0.65642166, y: 0.13400766, z: 0}
+  m_PointLightInnerAngle: 180
+  m_PointLightOuterAngle: 180
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.6591503
+  m_PointLightOuterRadius: 0.7050688
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffSize: 0
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.12236683, y: -0.5355824, z: 0}
-  - {x: 0.029665833, y: -0.53766197, z: 0}
-  - {x: 0.04484221, y: 0.62002397, z: 0}
-  - {x: -0.09472449, y: 0.6218857, z: 0}
+  - {x: -0.66257477, y: -0.0012153387, z: 0}
+  - {x: 0.64673615, y: 0.00022530556, z: 0}
+  - {x: 0.63752747, y: 0.26602963, z: 0}
+  - {x: -0.6661072, y: 0.25584745, z: 0}
 --- !u!1 &4821286339347120882
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4821286339347120882}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.6, y: -1.111, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

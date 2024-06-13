@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Rendering.Universal;
+using System;
 
 public class GameManagerCine : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GameManagerCine : MonoBehaviour
     public bool isOnAttackTutorial = true;
     PlayerController playerController;
     public Animator beginPanel;
-    public Animator gameUI;
+    public GameObject gameUI;
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject beginPanelMenu;
     [SerializeField] GameObject pauseMenu;
@@ -25,12 +26,6 @@ public class GameManagerCine : MonoBehaviour
     public ParalaxTimer bgPrlx33;
     public ParalaxTimer bgPrlx5;
     public ParalaxTimer bgPrlx55;
-    float actualParalax1x2;
-    float actualParalax1x22;
-    float actualParalax1x3;
-    float actualParalax1x33;
-    float actualParalax1x5;
-    float actualParalax1x55;
     public static int money;
     public int stageMoney;
     public int blueCard;
@@ -38,44 +33,11 @@ public class GameManagerCine : MonoBehaviour
     public TextMeshProUGUI stageMoneyText;
     public TextMeshProUGUI stageMoneyCollectedText;
     public TextMeshProUGUI totalMoneyCollectedText;
+    public TextMeshProUGUI doubleMoneyText;
     public TextMeshProUGUI blueCardText;
     public TextMeshProUGUI distanceTraveledText;
     private Light2D globalLight;
-    // void Update()
-    // {
-    //     if (playerController.isHit)
-    //     {
-    //         actualParalax1x2 = bgPrlx2.GetComponent<ParalaxTimer>().speed;
-    //         actualParalax1x22 = bgPrlx22.GetComponent<ParalaxTimer>().speed;
-
-    //         actualParalax1x3 = bgPrlx3.GetComponent<ParalaxTimer>().speed;
-    //         actualParalax1x33 = bgPrlx33.GetComponent<ParalaxTimer>().speed;
-
-    //         actualParalax1x5 = bgPrlx5.GetComponent<ParalaxTimer>().speed;
-    //         actualParalax1x55 = bgPrlx55.GetComponent<ParalaxTimer>().speed;
-
-    //         bgPrlx2.GetComponent<ParalaxTimer>().speed = 0f;
-    //         bgPrlx22.GetComponent<ParalaxTimer>().speed = 0f;
-
-    //         bgPrlx3.GetComponent<ParalaxTimer>().speed = 0f;
-    //         bgPrlx33.GetComponent<ParalaxTimer>().speed = 0f;
-
-    //         bgPrlx5.GetComponent<ParalaxTimer>().speed = 0f;
-    //         bgPrlx55.GetComponent<ParalaxTimer>().speed = 0f;
-    //     }
-    //     // else if (!playerController.isHit)
-    //     else
-    //     {
-    //         bgPrlx22.GetComponent<ParalaxTimer>().speed = actualParalax1x2;
-    //         bgPrlx22.GetComponent<ParalaxTimer>().speed = actualParalax1x22;
-
-    //         bgPrlx3.GetComponent<ParalaxTimer>().speed = actualParalax1x3;
-    //         bgPrlx33.GetComponent<ParalaxTimer>().speed = actualParalax1x33;
-
-    //         bgPrlx5.GetComponent<ParalaxTimer>().speed = actualParalax1x5;
-    //         bgPrlx55.GetComponent<ParalaxTimer>().speed = actualParalax1x55;
-    //     }
-    // }
+    AdManager adManager;
     void Awake()
     {
         // ClearAllPlayerPrefs();
@@ -89,30 +51,33 @@ public class GameManagerCine : MonoBehaviour
         }
         LoadMoney();
         LoadAeroLadState();
-        LoadTutorialState();
+        // LoadTutorialState();
 
         GameObject globalLightObj = GameObject.Find("Global Light 2D");
         globalLight = globalLightObj.GetComponent<Light2D>();
+
+        adManager = GameObject.Find("Ads").GetComponent<AdManager>();
     }
     void Start()
     {
         shopMoneyText.text = money.ToString();
+
     }
     void Update()
     {
         distanceTraveledText.text = "Distance: " + playerController.distanceTraveled.ToString("F1");
+
     }
     public void StartGame()
     {
         StartCoroutine(StartGameLevel1());
     }
-
     public IEnumerator StartGameLevel1()
     {
         beginPanel.GetComponent<Animator>().SetBool("playGame", true);
         yield return new WaitForSeconds(1f);
 
-        gameUI.GetComponent<Animator>().SetBool("playGame", true);
+        gameUI.SetActive(true);
         yield return new WaitForSeconds(1f);
 
         playerController.GetComponent<Animator>().SetBool("playGame", true);
@@ -133,7 +98,6 @@ public class GameManagerCine : MonoBehaviour
     {
         GameObject globalLightObj = GameObject.Find("Global Light 2D");
         globalLight = globalLightObj.GetComponent<Light2D>();
-        // globalLight.intensity = intensity;
         StartCoroutine(ChangeLightIntensity(intensity, duration));
     }
     private IEnumerator ChangeLightIntensity(float targetIntensity, float duration)
@@ -158,6 +122,7 @@ public class GameManagerCine : MonoBehaviour
         SceneManager.LoadScene("Game Camera Moving");
         Time.timeScale = 1f;
     }
+
     public void OpenShop()
     {
         shopMoneyText.text = money.ToString();
@@ -202,13 +167,37 @@ public class GameManagerCine : MonoBehaviour
     public void Lose()
     {
         int totalMoney = stageMoney + money;
+        int doubleGains = stageMoney * 2 + money;
         money = totalMoney;
         stageMoneyCollectedText.text = "Money collected: " + stageMoney.ToString();
         totalMoneyCollectedText.text = "Total money : " + money.ToString();
+        doubleMoneyText.text = doubleGains.ToString();
+        SaveMoney();
+        LoadAeroLadState();
         losePanel.SetActive(true);
         gameIsStarted = false;
         Time.timeScale = 0f;
     }
+
+    //ADS AND REWARDEDS STUFFS
+    public void RewardedAdDoubleMoney()
+    {
+        adManager.ShowRewardedAd();
+    }
+    public void StuffsToDoAfterRewardPlayer()
+    {
+        int totalMoney = stageMoney + money;
+        money = totalMoney;
+        SaveMoney();
+        LoadAeroLadState();
+        losePanel.SetActive(false);
+        // Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameIsStarted = true;
+        Time.timeScale = 1f;
+    }
+
+    //SAVE AND LOAD STUFFS
     private static void ClearAllPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
@@ -236,18 +225,18 @@ public class GameManagerCine : MonoBehaviour
         bool isActive = aeroladState == 1 ? true : false;
         playerController.aeroLad.SetActive(isActive);
     }
-    public void SaveTutorialState()
-    {
-        PlayerPrefs.SetInt("IsOnJumpTutorial", isOnJumpTutorial ? 1 : 0);
-        PlayerPrefs.SetInt("IsOnSlideTutorial", isOnSlideTutorial ? 1 : 0);
-        PlayerPrefs.SetInt("IsOnAttackTutorial", isOnAttackTutorial ? 1 : 0);
+    // public void SaveTutorialState()
+    // {
+    //     PlayerPrefs.SetInt("IsOnJumpTutorial", isOnJumpTutorial ? 1 : 0);
+    //     PlayerPrefs.SetInt("IsOnSlideTutorial", isOnSlideTutorial ? 1 : 0);
+    //     PlayerPrefs.SetInt("IsOnAttackTutorial", isOnAttackTutorial ? 1 : 0);
 
-        PlayerPrefs.Save();
-    }
-    public void LoadTutorialState()
-    {
-        isOnJumpTutorial = PlayerPrefs.GetInt("IsOnJumpTutorial", 1) == 1;
-        isOnSlideTutorial = PlayerPrefs.GetInt("IsOnSlideTutorial", 1) == 1;
-        isOnAttackTutorial = PlayerPrefs.GetInt("IsOnAttackTutorial", 1) == 1;
-    }
+    //     PlayerPrefs.Save();
+    // }
+    // public void LoadTutorialState()
+    // {
+    //     isOnJumpTutorial = PlayerPrefs.GetInt("IsOnJumpTutorial", 1) == 1;
+    //     isOnSlideTutorial = PlayerPrefs.GetInt("IsOnSlideTutorial", 1) == 1;
+    //     isOnAttackTutorial = PlayerPrefs.GetInt("IsOnAttackTutorial", 1) == 1;
+    // }
 }
