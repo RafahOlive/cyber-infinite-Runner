@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isGrounded;
     public bool isOnPlatform = false;
     private Collider2D platformCollider;
-    int maxHealth = 3;
+    public int maxHealth = 3;
     public int currentHealth;
     public Image[] healthBars;
     public bool gameOver = false;

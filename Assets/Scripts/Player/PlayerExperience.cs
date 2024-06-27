@@ -58,7 +58,6 @@ public class PlayerExperience : MonoBehaviour
     {
         if (xpBar != null)
         {
-            Debug.Log("A barra de XP foi referenciada corretamente.");
             float progress = (float)currentXP / maxXP;
             xpBar.fillAmount = progress;
         }
@@ -70,14 +69,59 @@ public class PlayerExperience : MonoBehaviour
 
     void SelectRandomSkills(int count)
     {
-        List<GameObject> availableSkills = new(skills);
+        // List<GameObject> availableSkills = new(skills);
+        List<GameObject> availableSkills = new List<GameObject>();
+
+        foreach (GameObject skill in skills)
+        {
+            if (skill.name == "Skill Recovery" && CanUseSkillRecovery())
+            {
+                availableSkills.Add(skill);
+            }
+            else if (skill.name == "Skill Add AeroLad" && CanUseSkillAeroLad())
+            {
+                availableSkills.Add(skill);
+            }
+            else if (skill.name == "Skill Sequencial Punch" && CanUseSkillSequencialPunch())
+            {
+                availableSkills.Add(skill);
+            }
+            else if (skill.name == "Skill Unique Punch" && CanUseSkillOnePunch())
+            {
+                availableSkills.Add(skill);
+            }
+        }
 
         for (int i = 0; i < count; i++)
+        // for (int i = 0; i < count && availableSkills.Count > 0; i++)
         {
-            int randomIndex = Random.Range(0, availableSkills.Count);
-            selectedSkills.Add(availableSkills[randomIndex]);
-            availableSkills.RemoveAt(randomIndex);
+            if (availableSkills.Count > 0)
+            {
+                int randomIndex = Random.Range(0, availableSkills.Count);
+                selectedSkills.Add(availableSkills[randomIndex]);
+                availableSkills.RemoveAt(randomIndex);
+            }
+            else
+            {
+                List<GameObject> skillsList = new List<GameObject>(skills);
+                GameObject skillNone = skillsList.Find(skill => skill.name == "Skill None");
+                if (skillNone != null)
+                {
+                    selectedSkills.Add(skillNone);
+                }
+            }
+
         }
+        LogSelectedSkills();
+    }
+    void LogSelectedSkills()
+    {
+        string skills = "Selected Skills: ";
+        foreach (GameObject skill in selectedSkills)
+        {
+            skills += skill.name + ", ";
+        }
+        Debug.Log(skills);
     }
     void ActivateSelectedSkills()
     {
@@ -141,5 +185,25 @@ public class PlayerExperience : MonoBehaviour
         gameManager.gameIsPaused = false;
         DisableAllSkills();
         levelUpPanel.SetActive(false);
+    }
+
+    bool CanUseSkillRecovery()
+    {
+        return playerController.currentHealth < playerController.maxHealth;
+    }
+
+    bool CanUseSkillAeroLad()
+    {
+        return !playerController.aeroLad.activeSelf;
+    }
+
+    bool CanUseSkillSequencialPunch()
+    {
+        return !playerController.GetComponent<Animator>().GetBool("attackDouble");
+    }
+
+    bool CanUseSkillOnePunch()
+    {
+        return playerController.GetComponent<Animator>().GetBool("attackDouble");
     }
 }
