@@ -16,6 +16,8 @@ public class GameManagerCine : MonoBehaviour
     PlayerController playerController;
     public Animator beginPanel;
     public GameObject gameUI;
+    Animator losePanelAnim;
+    Animator pauseMenuAnim;
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject beginPanelMenu;
     [SerializeField] GameObject pauseMenu;
@@ -57,6 +59,8 @@ public class GameManagerCine : MonoBehaviour
         globalLight = globalLightObj.GetComponent<Light2D>();
 
         adManager = GameObject.Find("Ads").GetComponent<AdManager>();
+        losePanelAnim = losePanel.GetComponent<Animator>();
+        pauseMenuAnim = pauseMenu.GetComponent<Animator>();
     }
     void Start()
     {
@@ -143,13 +147,13 @@ public class GameManagerCine : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenu.SetActive(true);
+        pauseMenuAnim.Play("Pause");
         gameIsPaused = true;
         Time.timeScale = 0f;
     }
     public void Resume()
     {
-        pauseMenu.SetActive(false);
+        pauseMenuAnim.Play("Idle");
         gameIsPaused = false;
         gameIsStarted = true;
         Time.timeScale = 1f;
@@ -174,9 +178,10 @@ public class GameManagerCine : MonoBehaviour
         doubleMoneyText.text = doubleGains.ToString();
         SaveMoney();
         LoadAeroLadState();
-        losePanel.SetActive(true);
+        losePanelAnim.Play("Lose");
         gameIsStarted = false;
         Time.timeScale = 0f;
+        
     }
 
     //ADS AND REWARDEDS STUFFS
@@ -190,7 +195,7 @@ public class GameManagerCine : MonoBehaviour
         money = totalMoney;
         SaveMoney();
         LoadAeroLadState();
-        losePanel.SetActive(false);
+        losePanelAnim.Play("Idle");
         // Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameIsStarted = true;

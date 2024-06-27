@@ -27,6 +27,7 @@ public class Shop : MonoBehaviour
                 buyAeroladOnceButton.interactable = false;
                 GameManagerCine.money -= 50;
                 gameManager.shopMoneyText.text = GameManagerCine.money.ToString();
+                GameManagerCine.SaveMoney();
                 gameManager.SaveAeroLadState();
             }
         }

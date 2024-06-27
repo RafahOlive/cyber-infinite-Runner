@@ -48,15 +48,17 @@ public class LevelGenerator : MonoBehaviour
             spawnPosition = new Vector2(lastSpawnPosition, 0f);
             GameObject[] selectedStages = spawnLevelOneNext ? dayStages : nightStages; // Seleciona o grupo de telas
             int randomIndex = Random.Range(0, selectedStages.Length); // Escolhe uma tela aleatoriamente
-            stageLoop = Instantiate(selectedStages[randomIndex], spawnPosition, Quaternion.identity);
+            
             if (gameManager.blueCard != 3)
             {
                 if (spawnLevelOneNext)
                 {
+                    stageLoop = Instantiate(selectedStages[randomIndex], spawnPosition, Quaternion.identity);
                     gameManager.ChangeGlobalLight(0.3f, 10f);
                 }
                 else
                 {
+                    stageLoop = Instantiate(selectedStages[randomIndex], spawnPosition, Quaternion.identity);
                     gameManager.ChangeGlobalLight(0.5f, 10f);
                 }
                 spawnLevelOneNext = !spawnLevelOneNext;
